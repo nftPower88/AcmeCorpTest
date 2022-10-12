@@ -15,7 +15,8 @@ contract WidgetsFactory is ERC20, Ownable {
     uint256 public _lastShipedOrder = 0;
     uint256 public _currentOrderId = 0;
     
-    constructor() ERC20("WidgetsFactory", "Widgets") {        
+    constructor() ERC20("WidgetsFactory", "Widgets") {    
+        _addManager(msg.sender);    
     }    
 
     /**
@@ -71,7 +72,7 @@ contract WidgetsFactory is ERC20, Ownable {
     function OrderPurchase(address orderor, uint256 amount) public payable{
         require(_managers[orderor] == false, "Orderor should not be manager");
         require(_getAmount() > amount, "Not have enough stock");
-        require(msg.value == amount * 10 ** 16, "Not have enough funds");
+        require(msg.value > amount * 10 ** 16, "Not have enough funds");
 
         _acceptedOrder[_currentOrderId] = orderor;
         _acceptedShip[orderor] = amount;
