@@ -31,7 +31,7 @@ const deploy = async (name: string, ...args: any) => {
 };
 
 async function deployProc() {
-  const blink = await deploy("Blink");
+  const blink = await deploy("WidgetsFactory");
 }
 
 deployProc();
