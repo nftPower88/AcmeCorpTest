@@ -7,9 +7,9 @@ Acme corp widgets modeling
 npm install (yarn)
 
 # Smart Contract
-- build
+- build:
   npx hardhat compile
 
-- test
+- test:
   npx hardhat test
 
