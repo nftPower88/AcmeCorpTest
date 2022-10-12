@@ -6,13 +6,19 @@ import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract WidgetsFactory is ERC20, Ownable {
-    
+    // warehouse managers: contract owner can add/delete managers
     mapping(address => bool) public _managers;        
+    // factory stock indicator: this indicate the amount of factory widgets
     uint256 private _stock;
+    // the accepted customer order list: if customer success to order, customer be added to this list
     mapping(uint256 => address) public _acceptedOrder;
+    // the accepted amount of customer order list: if customer success to order, order amount be added to this list
     mapping(address => uint256) public _acceptedShip;
+    // the shiped customer order list: if manager ship the accepted order, be updated to this list
     mapping(uint256 => address) public _shipedOrder;
+    // the index of order which manager shiped
     uint256 public _lastShipedOrder = 0;
+    // the index of order which customer success to order
     uint256 public _currentOrderId = 0;
     
     constructor() ERC20("WidgetsFactory", "Widgets") {    
