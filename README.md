@@ -11,7 +11,7 @@ npm install (yarn)
   npx hardhat compile
 
 - local deploy:
-  npx hardhat rund .\scripts\deploy.ts
+  npx hardhat run .\scripts\deploy.ts
 
 - test:
   npx hardhat test
